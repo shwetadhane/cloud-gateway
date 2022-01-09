@@ -20,3 +20,12 @@ spring:
 
 server:
   port: 9099
+
+eureka:
+    client:
+        register-with-eureka: true
+        fetch-registry: true
+        service-url:
+            defaultZone: http://172.17.0.3:8761/eureka/
+    instance:
+        hostname: discovery-server
