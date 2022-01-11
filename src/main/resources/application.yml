@@ -19,12 +19,12 @@ spring:
 
 
 server:
-  port: 9098
+  port: 9091
 
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://172.17.0.3:8761/eureka/
+      defaultZone: ${EUREKA_URI:http://172.17.0.2:8761/eureka}
   instance:
     preferIpAddress: true
 
