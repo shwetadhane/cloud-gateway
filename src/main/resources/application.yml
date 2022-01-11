@@ -1,31 +1,35 @@
 spring:
   application:
-    name: cloud-gateway
+    name: CLOUD-GATEWAY
   cloud:
     gateway:
       routes:
-        - id: movie-catalog-service
-          uri: lb://movie-catalog-service
+        - id: MOVIE-CATALOG-SERVICE
+          uri: lb://MOVIE-CATALOG-SERVICE
           predicates:
             - Path=/catalog/**
-        - id: movie-info-service
-          uri: lb://movie-info-service
+        - id: MOVIE-INFO-SERVICE
+          uri: lb://MOVIE-INFO-SERVICE
           predicates:
             - Path=/movies/**
-        - id: ratings-data-service
-          uri: lb://ratings-data-service
+        - id: RATINGS-DATA-SERVICE
+          uri: lb://RATINGS-DATA-SERVICE
           predicates:
             - Path=/ratingsdata/**
 
 
 server:
-  port: 9099
+  port: 9098
 
 eureka:
-    client:
-        register-with-eureka: true
-        fetch-registry: true
-        service-url:
-            defaultZone: http://172.17.0.3:8761/eureka/
-    instance:
-        hostname: discovery-server
+  client:
+    serviceUrl:
+      defaultZone: http://172.17.0.3:8761/eureka/
+  instance:
+    preferIpAddress: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
